@@ -15,7 +15,7 @@ $Num_Serie = $serial_number[2].substring($serial_number[2].length - 10, 4)
 <#----------------------------------------------------------------------------------------------------------------------#> 
 <#  recuperer le model du poste et le met dans le presse papier #> 
 $SKU = ((Get-WmiObject -Namespace root\wmi -Class MS_SystemInformation).SystemSKU).Split(' ', 2)
-$New_Name = 'PT-' + $SKU[1].Replace(' ', '') + '-' + $Num_Serie
+$New_Name = 'PT-' + $SKU[1].Replace(' ', '','Gen','') + '-' + $Num_Serie
 Set-Clipboard -Value  $New_Name
 <#----------------------------------------------------------------------------------------------------------------------#> 
 
@@ -41,7 +41,7 @@ New-Item -Path "c:\" -Name "BGM" -ItemType "directory"
 
 <#----------------------------------------------------------------------------------------------------------------------#> 
 <# ouvre les application a mettre sur le bureau #> 
-$Icon_Affichage = Rundll32.exe shell32.dll, Control_RunDLL desk.cpl, 0, 0
+$Icon_Affichage = Rundll32.exe shell32.dll, Control_RunDLL desk.cpl,0,0
 <#----------------------------------------------------------------------------------------------------------------------#> 
 
 

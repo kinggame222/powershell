@@ -15,7 +15,7 @@ $Num_Serie = $serial_number[2].substring($serial_number[2].length - 10, 4)
 <#----------------------------------------------------------------------------------------------------------------------#> 
 <#  recuperer le model du poste et le met dans le presse papier #> 
 $SKU = ((Get-WmiObject -Namespace root\wmi -Class MS_SystemInformation).SystemSKU).Split(' ', 2)
-$New_Name = 'PT-' + $SKU[1].Replace(' ', '','Gen','') + '-' + $Num_Serie
+$New_Name = 'PT-' + $SKU[1].Replace(' ', '').Replace('Gen','') + '-' + $Num_Serie
 Set-Clipboard -Value  $New_Name
 <#----------------------------------------------------------------------------------------------------------------------#> 
 
@@ -67,5 +67,5 @@ $Nom_pour_changer_pc
 $Restart_auto
 $vidage_mem 
 <#----------------------------------------------------------------------------------------------------------------------#> 
-TODO afficher directement performenceou meme sans avoir a les modifier manuellement  
+TODO afficher directement performence ou meme sans avoir a les modifier manuellement  
 <#----------------------------------------------------------------------------------------------------------------------#> 

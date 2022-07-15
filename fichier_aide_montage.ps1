@@ -34,8 +34,10 @@ $New_Name >> $Path
 
 
 <#----------------------------------------------------------------------------------------------------------------------#> 
-<#  cree le repertoire BGM #> 
-New-Item -Path "c:\" -Name "BGM" -ItemType "directory"
+<#  cree le repertoire BGM si il n'existe pas#> 
+if (!(Test-Path -Path "c:\BGM")) {
+    New-Item -Path "c:\" -Name "BGM" -ItemType "directory"
+}
 <#----------------------------------------------------------------------------------------------------------------------#> 
 
 
@@ -67,5 +69,11 @@ $Nom_pour_changer_pc
 $Restart_auto
 $vidage_mem 
 <#----------------------------------------------------------------------------------------------------------------------#> 
-TODO afficher directement performence ou meme sans avoir a les modifier manuellement  
+<#change le background et tranfere l'image#> 
+net use "\\TRUENAS\partage atelier\atelier\montage"
+$strLFpath = "\\TRUENAS\partage atelier\atelier\montage\Fond BGM Full HD.bmp"
+$StrRLPath = "C:\BGM"  
+Copy-Item -Path $strLFpath -Destination $StrRLPath -Force  
+Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value 'C:\BGM\Fond BGM Full HD.bmp'
+rundll32.exe user32.dll, UpdatePerUserSystemParameters
 <#----------------------------------------------------------------------------------------------------------------------#> 

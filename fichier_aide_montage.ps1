@@ -69,11 +69,49 @@ $Nom_pour_changer_pc
 $Restart_auto
 $vidage_mem 
 <#----------------------------------------------------------------------------------------------------------------------#> 
+
+
+<#----------------------------------------------------------------------------------------------------------------------#> 
+
 <#change le background et tranfere l'image#> 
-net use "\\TRUENAS\partage atelier\atelier\montage"
-$strLFpath = "\\TRUENAS\partage atelier\atelier\montage\Fond BGM Full HD.bmp"
+
+$strLFpath = "E:\montage\montage\Fond BGM Full HD.bmp"
 $StrRLPath = "C:\BGM"  
 Copy-Item -Path $strLFpath -Destination $StrRLPath -Force  
 Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value 'C:\BGM\Fond BGM Full HD.bmp'
 rundll32.exe user32.dll, UpdatePerUserSystemParameters
+<#----------------------------------------------------------------------------------------------------------------------#> 
+
+
+<#----------------------------------------------------------------------------------------------------------------------#> 
+<#mettre le support dur le Desktop#> 
+
+$source = "E:\montage\montage\Support BGM.exe"
+$destination = "C:\Users\$env:UserName\Desktop"  
+Copy-Item -Path $source -Destination $destination -Force  
+<#----------------------------------------------------------------------------------------------------------------------#> 
+
+
+<#----------------------------------------------------------------------------------------------------------------------#> 
+<#mettre les applications sur le Desktop#> 
+
+$destination = "C:\Users\$env:UserName\Desktop"  
+
+$source1 = "E:\montage\montage\logiciel\ChromeSetup (1).exe"
+Copy-Item -Path $source1 -Destination $destination -Force  
+
+$source2 = "E:\montage\montage\logiciel\readerdc64_fr_xa_crd_gocd_install.exe"
+Copy-Item -Path $source2 -Destination $destination -Force  
+
+$source3 = "E:\montage\montage\logiciel\vlc-3.0.11-win32.exe"
+Copy-Item -Path $source3 -Destination $destination -Force  
+
+$source4 = "E:\montage\montage\logiciel\winrar-x64-561fr.exe"
+Copy-Item -Path $source4 -Destination $destination -Force  
+
+Start-Process -FilePath "C:\Users\$env:UserName\Desktop\ChromeSetup (1).exe" 
+Start-Process -FilePath "C:\Users\$env:UserName\Desktop\readerdc64_fr_xa_crd_gocd_install.exe" 
+Start-Process -FilePath "C:\Users\$env:UserName\Desktop\vlc-3.0.11-win32.exe" 
+Start-Process -FilePath "C:\Users\$env:UserName\Desktop\winrar-x64-561fr.exe" 
+
 <#----------------------------------------------------------------------------------------------------------------------#> 

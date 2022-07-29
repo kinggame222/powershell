@@ -5,6 +5,11 @@ pour utiliser , copier tout et executer le dans un powershell administrateur
 ------------------------------------------------------------------------------------------------------------------------#> 
 
 <#----------------------------------------------------------------------------------------------------------------------#> 
+<#  recuperer la lettre du lecteur #> 
+$lettre = Read-Host -Prompt "entre la lettre du lecteur en majuscule"
+<#----------------------------------------------------------------------------------------------------------------------#> 
+
+<#----------------------------------------------------------------------------------------------------------------------#> 
 <#  recuperer le numéro de série de la machine #> 
 $serial_number = wmic bios get SerialNumber
 $Num_Serie = $serial_number[2].substring($serial_number[2].length - 10, 4)
@@ -64,7 +69,7 @@ $vidage_mem
 
 <#----------------------------------------------------------------------------------------------------------------------#> 
 <#change le background et tranfere l'image#> 
-$strLFpath = "E:\montage\montage\Fond BGM Full HD.bmp"
+$strLFpath =$lettre + ":\montage\montage\Fond BGM Full HD.bmp"
 $StrRLPath = "C:\BGM"  
 Copy-Item -Path $strLFpath -Destination $StrRLPath -Force  
 Set-ItemProperty -path 'HKCU:\Control Panel\Desktop\' -name wallpaper -value 'C:\BGM\Fond BGM Full HD.bmp'
@@ -73,7 +78,7 @@ rundll32.exe user32.dll, UpdatePerUserSystemParameters
 
 <#----------------------------------------------------------------------------------------------------------------------#> 
 <#mettre le support dur le Desktop#> 
-$source = "E:\montage\montage\Support BGM.exe"
+$source = $lettre + ":\montage\montage\Support BGM.exe"
 $destination = "C:\Users\$env:UserName\Desktop"  
 Copy-Item -Path $source -Destination $destination -Force  
 <#----------------------------------------------------------------------------------------------------------------------#> 
@@ -81,13 +86,13 @@ Copy-Item -Path $source -Destination $destination -Force
 <#----------------------------------------------------------------------------------------------------------------------#> 
 <#mettre les applications sur le Desktop#> 
 $destination = "C:\Users\$env:UserName\Desktop"  
-$source1 = "E:\montage\montage\logiciel\ChromeSetup (1).exe"
+$source1 = $lettre + ":\montage\montage\logiciel\ChromeSetup (1).exe"
 Copy-Item -Path $source1 -Destination $destination -Force  
-$source2 = "E:\montage\montage\logiciel\readerdc64_fr_xa_crd_gocd_install.exe"
+$source2 = $lettre + ":\montage\montage\logiciel\readerdc64_fr_xa_crd_gocd_install.exe"
 Copy-Item -Path $source2 -Destination $destination -Force  
-$source3 = "E:\montage\montage\logiciel\vlc-3.0.11-win32.exe"
+$source3 = $lettre + ":\montage\montage\logiciel\vlc-3.0.11-win32.exe"
 Copy-Item -Path $source3 -Destination $destination -Force  
-$source4 = "E:\montage\montage\logiciel\winrar-x64-561fr.exe"
+$source4 = $lettre + ":\montage\montage\logiciel\winrar-x64-561fr.exe"
 Copy-Item -Path $source4 -Destination $destination -Force  
 Start-Process -FilePath "C:\Users\$env:UserName\Desktop\ChromeSetup (1).exe" 
 Start-Process -FilePath "C:\Users\$env:UserName\Desktop\readerdc64_fr_xa_crd_gocd_install.exe" 

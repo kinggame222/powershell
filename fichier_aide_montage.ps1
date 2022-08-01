@@ -4,6 +4,7 @@ But : Accélérer le montage de portable lenovo
 pour utiliser , copier tout et executer le dans un powershell administrateur 
 ------------------------------------------------------------------------------------------------------------------------#> 
 
+						
 <#----------------------------------------------------------------------------------------------------------------------#> 
 <#  recuperer la lettre du lecteur #> 
 $lettre = Read-Host -Prompt "entre la lettre du lecteur en majuscule"
@@ -99,3 +100,4 @@ Start-Process -FilePath "C:\Users\$env:UserName\Desktop\readerdc64_fr_xa_crd_goc
 Start-Process -FilePath "C:\Users\$env:UserName\Desktop\vlc-3.0.11-win32.exe" 
 Start-Process -FilePath "C:\Users\$env:UserName\Desktop\winrar-x64-561fr.exe" 
 <#----------------------------------------------------------------------------------------------------------------------#> 
+

@@ -15,7 +15,6 @@ $serial_number = wmic bios get SerialNumber
 $Num_Serie = $serial_number[2].substring($serial_number[2].length - 10, 4)
 <#----------------------------------------------------------------------------------------------------------------------#> 
 
-will
 
 <#----------------------------------------------------------------------------------------------------------------------#> 
 <#  recuperer le model du poste et le met dans le presse papier #> 
